@@ -5,6 +5,9 @@ namespace SDNLib
 {
     public class Plugins
     {
+        /// <summary>
+        /// Simple method, searches for plugins and spits out a list of them
+        /// </summary>
         public List<PluginData> Searcher(string path)
         {
             var pluginList = new List<PluginData>();//declare the list
@@ -19,6 +22,9 @@ namespace SDNLib
             }
             return pluginList;//return the data
         }
+        /// <summary>
+        /// This is a really good tool for testing, or a really shit way to improve performance
+        /// </summary>
         public void CompileAll(List<PluginData> catalog, string path)//a method to compile all known plugins in a catalog
         {
             #if DEBUG
