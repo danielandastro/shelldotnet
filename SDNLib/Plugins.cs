@@ -8,7 +8,7 @@ namespace SDNLib
         /// <summary>
         /// Simple method, searches for plugins and spits out a list of them
         /// </summary>
-        public List<PluginData> Searcher(string path)
+        public  List<PluginData> Searcher(string path)
         {
             var pluginList = new List<PluginData>();//declare the list
             var temp = new PluginData();//store data before shifting to the list
@@ -32,6 +32,25 @@ namespace SDNLib
             #elif RELEASE
             #warning Please rethink this desision
             #endif
+            foreach (var file in catalog)
+            {
+                var process = Process.Start("mcs", path + "/" + file.fileName);
+                process.WaitForExit();
+            }
+            /*This is a really cheap and nasty way to improve performance on slower machines
+             * It is stupid, probably unrequired if you implement half-decent caching
+             * but it is there if required
+             * But seriously, please do not use this
+             */
+        }
+        public void CompileAll(string path)//a method to compile all known plugins in a catalog
+        {
+#if DEBUG
+#warning This method may be used for testing, but should not be used in production
+#elif RELEASE
+#warning Please rethink this desision
+#endif
+            var catalog = Searcher(path);
             foreach (var file in catalog)
             {
                 var process = Process.Start("mcs", path + "/" + file.fileName);
