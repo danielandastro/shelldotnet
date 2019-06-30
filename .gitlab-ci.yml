@@ -2,7 +2,6 @@ image: microsoft/dotnet:latest
 
 stages:
   - build
-  - test
 
 
 before_script:
@@ -16,9 +15,3 @@ build:
   stage: build
   script:
     - "dotnet build"
-
-test:
-  stage: test
-  script:
-    - "cd $test"
-    - "dotnet test"
