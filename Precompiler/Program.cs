@@ -6,8 +6,8 @@ namespace Precompiler
     {
         static void Main(string[] args)
         { var lib = new Plugins();
-            var list = lib.Searcher("plugins");
-            lib.CompileAll(list, "plugins");
+            var list = lib.Searcher();
+            lib.CompileAll(list);
         }
     }
 }
