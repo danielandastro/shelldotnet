@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDNLib", "SDNLib\SDNLib.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Precompiler", "Precompiler\Precompiler.csproj", "{82334B72-83F5-4ECE-A807-A9DC2E8F464D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Executable", "Executable\Executable.csproj", "{3A8E6B38-3E3E-4A93-AB2D-575DBDF238A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{82334B72-83F5-4ECE-A807-A9DC2E8F464D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82334B72-83F5-4ECE-A807-A9DC2E8F464D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82334B72-83F5-4ECE-A807-A9DC2E8F464D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A8E6B38-3E3E-4A93-AB2D-575DBDF238A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A8E6B38-3E3E-4A93-AB2D-575DBDF238A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A8E6B38-3E3E-4A93-AB2D-575DBDF238A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A8E6B38-3E3E-4A93-AB2D-575DBDF238A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

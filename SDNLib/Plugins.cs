@@ -8,11 +8,11 @@ namespace SDNLib
         /// <summary>
         /// Simple method, searches for plugins and spits out a list of them
         /// </summary>
-        public  List<PluginData> Searcher(string path)
+        public  List<PluginData> Searcher()
         {
             var pluginList = new List<PluginData>();//declare the list
             var temp = new PluginData();//store data before shifting to the list
-            var files = Directory.GetFiles(path, "*.sdp");//read the files from the plugin folder
+            var files = Directory.GetFiles("./plugins", "*.sdp");//read the files from the plugin folder
             foreach(string file in files)//process the files
             {
                 temp.fileName = file;//filename storing
@@ -39,9 +39,27 @@ namespace SDNLib
             return path;
         }
         /// <summary>
+        /// This is a method to compile without executing, if you're into that weird stuff
+        /// </summary>
+        public void compile(string fileName)
+        {
+            var process = Process.Start("mcs ", "-out run.exe " + fileName);
+            process.WaitForExit();
+        }
+        /// <summary>
+        /// This is a method to compile and execute the plugin
+        /// </summary>
+        public void run(string fileName)
+        {
+            var process = Process.Start("mcs ", "-out run.exe " + fileName);
+            process.WaitForExit();
+            Process.Start("mono ", "run.exe");
+
+        }
+        /// <summary>
         /// This is a really good tool for testing, or a really shit way to improve performance
         /// </summary>
-        public void CompileAll(List<PluginData> catalog, string path)//a method to compile all known plugins in a catalog
+        public void CompileAll(List<PluginData> catalog)//a method to compile all known plugins in a catalog
         {
             #if DEBUG
             #warning This method may be used for testing, but should not be used in production
@@ -50,10 +68,11 @@ namespace SDNLib
             #endif
             foreach (var file in catalog)
             {
-                var process = Process.Start("mcs", path + "/" + file.fileName);
+                var process = Process.Start("mcs", file.fileName);
                 process.WaitForExit();
             }
-            /*This is a really cheap and nasty way to improve performance on slower machines
+            /*
+             * This is a really cheap and nasty way to improve performance on slower machines
              * It is stupid, probably unrequired if you implement half-decent caching
              * but it is there if required
              * But seriously, please do not use this
@@ -66,13 +85,14 @@ namespace SDNLib
 #elif RELEASE
 #warning Please rethink this desision
 #endif
-            var catalog = Searcher(path);
+            var catalog = Searcher();
             foreach (var file in catalog)
             {
                 var process = Process.Start("mcs", path + "/" + file.fileName);
                 process.WaitForExit();
             }
-            /*This is a really cheap and nasty way to improve performance on slower machines
+            /*
+             * This is a really cheap and nasty way to improve performance on slower machines
              * It is stupid, probably unrequired if you implement half-decent caching
              * but it is there if required
              * But seriously, please do not use this
