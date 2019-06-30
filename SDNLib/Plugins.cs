@@ -23,6 +23,22 @@ namespace SDNLib
             return pluginList;//return the data
         }
         /// <summary>
+        /// This is the method you should implement to search the list
+        ///  and return the required file for compilation
+        /// </summary>
+        public string search(string term, List<PluginData> listToSearch)
+        {
+            string path = "";
+            foreach (var dataItem in listToSearch)
+            {
+                if (term.Contains(dataItem.command))
+                {
+                    path = dataItem.fileName;
+                }
+            }
+            return path;
+        }
+        /// <summary>
         /// This is a really good tool for testing, or a really shit way to improve performance
         /// </summary>
         public void CompileAll(List<PluginData> catalog, string path)//a method to compile all known plugins in a catalog
