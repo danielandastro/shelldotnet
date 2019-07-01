@@ -10,7 +10,7 @@ namespace Executable
             var lib = new Plugins();
             var plugins = lib.Searcher();
             Console.WriteLine("Welcome to Shell Dot Net, version loaded is {0}", SDNLib.LibInfo.version);
-            Console.WriteLine(Directory.GetCurrentDirectory());
+            Console.WriteLine(Directory.GetCurrentDirectory());   
 
         }
     }
